@@ -1,0 +1,88 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Amesterdam
+        link(rel="stylesheet", href="assets/css/main.css")
+    body 
+        .wrapper
+            .container
+                .reset-flex
+                    main
+                        nav.box
+                            a.active(href="")
+                                i.fas.fa-home
+                                | home
+                            a(href="")
+                                i.far.fa-images
+                                |gallery
+                            a(href="")
+                                i.fas.fa-comments
+                                |message
+                            a(href="")
+                                i.fas.fa-music
+                                |music
+                            a(href="")
+                                i.fas.fa-search
+                                |search
+                            a(href="")
+                                i.fas.fa-cogs
+                                |settings
+                            a(href="")
+                                i.fas.fa-map-marker-alt
+                                |location
+                        .main-body 
+                            .video
+                                video(src="https://www.youtube.com/watch?v=HwKOojr-xMA" width="100" height="240" controls) 
+                            .about.box 
+                                img(src="assets/images/de.jpg", alt="")
+                                .content
+                                    h3 amsterdam 
+                                    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos esse eum, quasi odit, veniam quia quaerat facilis incidunt sapiente delectus dolore.
+                            .weather.box
+                                p 
+                                    span.deg 12&ordm;
+                                    span.icon 
+                                        i.fab.fa-cloudversify
+                                h4 saturday 16 JAN
+                            .record.box
+                                img(src="assets/images/old-car.jpg", alt="")
+                                .content 
+                                    h4 geef mij maar amsterdam 
+                                    p johnny jordaan 
+                                    .audio
+                                        .player
+                                            p 
+                                                span.bar
+                                                span.time 1:35
+                                        .control 
+                                            i.fas.fa-chevron-left.chev
+                                            i.fas.fa-pause.pause.active
+                                            i.fas.fa-chevron-right.chev
+                            .find-us.box
+                                input(id="search" type="search" placeholder="Find Your City Place")
+                                input(id="checkbox" type="checkbox")
+                                label(for="") add to favourites
+                                button search
+                            
+                    
+                    aside 
+                        .place.box
+                            img(src="assets/images/de.jpg", alt="")
+                            h3 de westerkerk 
+                            p Lorem, ipsum dolor.
+                            button view on maps
+
+                        .calender.box
+                            h4 saturday 
+                            p 
+                                i.fas.fa-chevron-left 
+                                | jan 
+                                i.fas.fa-chevron-right
+                            .days
+                                - for (let i = 1 ; i <= 30;i++ )
+                                    span(for="id-" + i) #{i}
+                    
+                
