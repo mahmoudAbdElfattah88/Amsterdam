@@ -29,7 +29,6 @@ html {
 body {
   font-family: "Nunito Sans", sans-serif;
   background-color: #eee;
-  height: 150rem;
 }
 
 .container {
@@ -93,6 +92,7 @@ a {
 }
 .wrapper .reset-flex main {
   width: 70%;
+  position: relative;
 }
 @media (max-width: 992px) {
   .wrapper .reset-flex main {
@@ -103,6 +103,13 @@ a {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  height: fit-content;
+  transition: height 0.5s;
+}
+@media screen and (max-width: 620px) {
+  .wrapper .reset-flex main nav {
+    display: none;
+  }
 }
 .wrapper .reset-flex main nav a {
   display: block;
@@ -123,24 +130,92 @@ a {
 .wrapper .reset-flex main nav a.active {
   color: #DD5555;
 }
+.wrapper .reset-flex main nav.active {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+.wrapper .reset-flex main nav.active a {
+  width: fit-content;
+  padding: 1rem 2rem;
+}
+.wrapper .reset-flex main nav.active a:not(:last-child) {
+  border-bottom: 1px solid #DD5555;
+}
+.wrapper .reset-flex main .toggle {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  width: 4rem;
+  height: 1.2rem;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1000;
+  display: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 620px) {
+  .wrapper .reset-flex main .toggle {
+    display: flex;
+  }
+}
+.wrapper .reset-flex main .toggle .top, .wrapper .reset-flex main .toggle .bottom {
+  display: block;
+  width: 100%;
+  height: 0.4rem;
+  background: #DD5555;
+  border-radius: 1.5rem;
+  transition: 0.5s;
+}
+.wrapper .reset-flex main .toggle.active {
+  width: 3rem;
+}
+.wrapper .reset-flex main .toggle.active .top {
+  transform: rotate(45deg) translateX(5px);
+}
+.wrapper .reset-flex main .toggle.active .bottom {
+  transform: rotate(-45deg) translateX(5px);
+}
+.wrapper .reset-flex main .logo {
+  position: absolute;
+  left: 0.5rem;
+  top: -0.5rem;
+  display: none;
+}
+@media (max-width: 620px) {
+  .wrapper .reset-flex main .logo {
+    display: block;
+  }
+}
+.wrapper .reset-flex main .logo a {
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  color: #DD5555;
+}
 .wrapper .reset-flex main .main-body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   grid-template-rows: minmax(10rem, auto);
   gap: 4rem;
   margin-top: 4rem;
+  overflow: hidden;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .wrapper .reset-flex main .main-body {
     grid-template-rows: repeat(auto, 1fr);
-    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
 }
 @media (max-width: 768px) {
   .wrapper .reset-flex main .main-body {
     gap: 2rem;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
+@media (max-width: 460px) {
+  .wrapper .reset-flex main .main-body {
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   }
 }
 .wrapper .reset-flex main .main-body .video {
@@ -154,7 +229,7 @@ a {
 @media (min-width: 768px) and (max-width: 991px) {
   .wrapper .reset-flex main .main-body .video {
     width: 100%;
-    grid-column: 1/3;
+    grid-column: 1/2;
     grid-row: 1/2;
   }
 }
@@ -176,11 +251,13 @@ a {
 .wrapper .reset-flex main .main-body .about {
   grid-column: 2/5;
   grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .wrapper .reset-flex main .main-body .about {
     width: 100%;
-    grid-column: 3/5;
+    grid-column: 2/5;
     grid-row: 1/3;
   }
 }
@@ -197,11 +274,16 @@ a {
 }
 @media (max-width: 420px) {
   .wrapper .reset-flex main .main-body .about img {
-    height: 65%;
+    height: 70%;
   }
 }
 .wrapper .reset-flex main .main-body .about .content {
   padding: 1.5rem;
+}
+@media (max-width: 420px) {
+  .wrapper .reset-flex main .main-body .about .content {
+    padding-right: 3rem;
+  }
 }
 .wrapper .reset-flex main .main-body .about .content h3 {
   font-family: "Playfair Display", serif;
@@ -222,7 +304,7 @@ a {
 @media (min-width: 768px) and (max-width: 991px) {
   .wrapper .reset-flex main .main-body .weather {
     width: 100%;
-    grid-column: 1/3;
+    grid-column: 1/2;
     grid-row: 2/3;
   }
 }
@@ -277,15 +359,29 @@ a {
   .wrapper .reset-flex main .main-body .record {
     grid-column: 1/5;
     grid-row: 5/6;
+    flex-flow: column wrap;
+    max-height: 35rem;
   }
 }
 .wrapper .reset-flex main .main-body .record img {
   height: 100%;
   width: 30%;
 }
+@media (max-width: 620px) {
+  .wrapper .reset-flex main .main-body .record img {
+    width: 100%;
+    max-height: 20rem;
+    display: block;
+    flex: 1;
+  }
+}
 .wrapper .reset-flex main .main-body .record .content {
   padding: 1.5rem;
-  flex: 1;
+}
+@media (max-width: 620px) {
+  .wrapper .reset-flex main .main-body .record .content {
+    flex: 1;
+  }
 }
 .wrapper .reset-flex main .main-body .record .content h4 {
   font-family: "Nunito Sans", sans-serif;
@@ -302,7 +398,7 @@ a {
 .wrapper .reset-flex main .main-body .record .content .audio {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 .wrapper .reset-flex main .main-body .record .content .audio .player p {
